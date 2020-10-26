@@ -90,6 +90,8 @@ export const restoreUsers = async (cognito: CognitoISP, UserPoolId: string, file
                 UserAttributes: attributes
             };
 
+            params.DesiredDeliveryMediums = ['EMAIL']
+
             // Set Username as email if UsernameAttributes of UserPool contains email
             if (UsernameAttributes.includes('email')) {
                 params.Username = pluckValue(user.Attributes, 'email') as string;
